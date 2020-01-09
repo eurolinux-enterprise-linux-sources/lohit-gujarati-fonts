@@ -3,7 +3,7 @@
 
 Name:           %{fontname}-fonts
 Version:        2.4.4
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Free Gujarati font
 
 Group:          User Interface/X
@@ -16,6 +16,7 @@ BuildRequires: fontforge >= 20080429
 BuildRequires:  fontpackages-devel
 Requires:       fontpackages-filesystem
 Patch1: bug-549319-578031.patch
+Patch2: bug-691287.patch
 Obsoletes: lohit-fonts-common < %{version}-%{release}
 
 %description
@@ -25,6 +26,7 @@ This package provides a free Gujarati truetype/opentype font.
 %prep
 %setup -q -n %{fontname}-%{version} 
 %patch1 -p1 -b .1-fix-font-conf
+%patch2 -p1 -b .1-added-rupee-sign
 
 %build
 make
@@ -54,6 +56,9 @@ rm -fr %{buildroot}
 
 
 %changelog
+* Fri Jul 01 2011 Pravin Satpute <psatpute@redhat.com> - 2.4.4-4
+- Resolves: bug 691287
+
 * Tue May 04 2010 Pravin Satpute <psatpute@redhat.com> - 2.4.4-3
 - Resolves: bug 586856
 
